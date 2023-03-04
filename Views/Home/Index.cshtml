@@ -1,0 +1,37 @@
+﻿@using WebApplication9.Models
+@model IList<Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div class="container">
+        <div class="col-md-4">
+            <form asp-controller="Home" asp-action="AddProduct" method="post">
+                <div class="form-group">
+                    Ürün Adı
+                    <input class="form-control" name="name" />
+                </div>
+                <div class="form-group mt-2">
+                    <button class="btn btn-outline-success">Kaydet</button>
+                </div>
+            </form>
+
+            <hr />
+            <ul>
+                @foreach(var item in Model){
+                    <li>
+                        @item.Name
+                        <a href="/Home/RemoveProductById?id=@item.Id" class="btn btn-outline-danger mx-1 btn-sm">
+                            Sil
+                        </a>
+
+                        </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <hr />
+</div>
